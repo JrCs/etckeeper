@@ -59,6 +59,10 @@ if [ ! -z "$PUSH_REMOTE" ]; then
 	export PUSH_REMOTE
 fi
 
+if [ ! -z "$PUSH_REMOTE_BRANCH" ]; then
+	export PUSH_REMOTE_BRANCH
+fi
+
 if [ -z "$1" ]; then
 	usage
 elif [ "x$1" = "x-h" ] || [ "x$1" = "x--help" ]; then

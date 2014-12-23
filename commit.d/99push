@@ -2,7 +2,10 @@
 if [ -n "$PUSH_REMOTE" ]; then
 	if [ "$VCS" = git ] && [ -d .git ]; then
 		for REMOTE in $PUSH_REMOTE; do
-			git push "$REMOTE" master || true
+			if [ -z "$PUSH_REMOTE_BRANCH" ]; then
+				PUSH_REMOTE_BRANCH='master'
+			fi
+			git push "$REMOTE" "$PUSH_REMOTE_BRANCH" || true
 		done
 	elif [ "$VCS" = hg ] && [ -d .hg ]; then
 		for REMOTE in $PUSH_REMOTE; do
